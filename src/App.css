@@ -1,11 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans);
+
 *{
   box-sizing: border-box;
 }
+
 body{
+  font-family: 'Josefin Sans', sans-serif;
   margin: 10px;
   padding: 10px;
 }
-
+input{
+  font-family: 'Josefin Sans', sans-serif;
+}
 .single-card{
   background-color: #F0F1F3;
   min-height: 400px;
@@ -14,7 +20,6 @@ body{
   border-radius: 10px;
   margin: 10px;
   padding: 5px;
-  float: left;
 }
 .add-card{
   border: 1px dashed darkblue;
@@ -23,7 +28,7 @@ body{
   border-radius: 10px;
   padding: 5px;
   cursor: pointer;
-  width: 300px;
+  width: 200px;
   text-align: center;
   background-color: white;
 
@@ -47,11 +52,16 @@ body{
   cursor: pointer;
   height: 22px;
   margin-top: 20px;
+  background-color: #F0F1F3;
 }
 .head-of-card{
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid darkblue;
+}
+.head-of-card h3{
+  text-align: center;
+  overflow: auto;
 }
 .task{
   background-color: white;
@@ -77,4 +87,54 @@ body{
 }
 button{
   outline: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.all-cards{
+  display: inline-flex;
+  border: 2px solid darkblue;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+.add-column{
+  min-height: 40px;
+  border-radius: 10px;
+  outline: none;
+  min-width: 300px;
+  padding: 5px;
+
+}
+.modal{
+  text-align: center;
+}
+.add-column-buttons{
+  margin:10px;
+}
+.add-column-buttons button{
+  width: 150px;
+  border-radius: 10px;
+  border-color: white;
+  border-width: 4px;
+  color: white;
+}
+.add-column-buttons button h3{
+  margin: 10px;
+}
+.add-single-card{
+  background-color: darkgreen;
+}
+.cancel-single-card{
+  background-color: darkred;
+  color: white;
+}
+.popup-content {
+  border-radius: 10px;
+  width: 30% !important;
+}
+.add-task h3{
+  margin: 0;
+  overflow: unset;
+}
+.task h3, .task p{
+  margin: 10px auto;
 }

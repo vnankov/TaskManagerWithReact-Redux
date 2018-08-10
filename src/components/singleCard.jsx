@@ -1,11 +1,14 @@
 import React from 'react'
 import Task from './task';
+import AddTask from './addTask';
+import { connect } from 'react-redux';
+
 
 class SingleCard extends React.Component{
 
 
     render(){
-        const { name, id } = this.props;
+        const { name, id, tasks } = this.props;
         return(
             <div className="single-card" id={id}>
                 <div className="head-of-card">
@@ -13,16 +16,49 @@ class SingleCard extends React.Component{
                         <p>1</p>
                     </div>
                     <h3>{name}</h3>
-                    <div className="add-task"> 
-                        <p>+</p>
-                    </div>
+                    <AddTask createTask={this.props.createTask}/>
                 </div>
-                <div>
-                    <Task nameOfTask="First Task Ever"/>
-                </div>
+                           
+                {
+                    tasks.map(task =>
+                        <Task name={task.name}
+                            key={task.id}
+                            id={task.id}
+                        />
+                    )
+                }
+                    
+                
             </div>
         )
     }
 }
 
-export default SingleCard;
+
+function mapStateToProps(state) {
+    const { tasks } = state;
+
+    return {
+        tasks: tasks    
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {  
+        createTask(name, id) {
+            const createTaskAction = {
+                type: 'CREATE_TASK',
+                task: {
+                    name, 
+                    id
+                }
+            };
+
+            dispatch(createTaskAction);
+        }
+
+        
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleCard);

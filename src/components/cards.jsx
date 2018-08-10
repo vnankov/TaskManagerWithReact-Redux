@@ -29,7 +29,7 @@ function mapStateToProps(state) {
     const { todos } = state;
 
     return {
-        todos: todos
+        todos: todos    
     };
 }
 
@@ -45,6 +45,7 @@ function mapDispatchToProps(dispatch) {
 
             dispatch(createColumnAction);
         }
+
         
     };
 }

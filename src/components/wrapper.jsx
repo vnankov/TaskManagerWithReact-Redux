@@ -4,12 +4,16 @@ import Filter from './filter';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-const store = createStore(function todosReducer(state = { todos: [], filter: "" }, action) {
+const store = createStore(function todosReducer(state = { todos: [], filter: "", tasks: [] }, action) {
     switch(action.type) {
-      case 'CREATE_TODO':
-        return Object.assign({}, state, {
-          todos: [...state.todos, { id: Math.random(), name: action.todo.name, isCompleted: false }]
-        });
+        case 'CREATE_TODO':
+            return Object.assign({}, state, {
+            todos: [...state.todos, { id: Math.random(), name: action.todo.name}]
+            });
+        case 'CREATE_TASK':
+            return Object.assign({}, state, {
+            tasks: [...state.tasks, { id: Math.random(), name: action.task.name}]
+            });
   
       default:
         return state;
