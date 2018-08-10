@@ -1,0 +1,80 @@
+*{
+  box-sizing: border-box;
+}
+body{
+  margin: 10px;
+  padding: 10px;
+}
+
+.single-card{
+  background-color: #F0F1F3;
+  min-height: 400px;
+  width: 300px;
+  border: 1px solid darkblue;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 5px;
+  float: left;
+}
+.add-card{
+  border: 1px dashed darkblue;
+  max-height: 67px;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  cursor: pointer;
+  width: 300px;
+  text-align: center;
+  background-color: white;
+
+}
+.task-numbers{
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 22px;
+  text-align: center;
+  height: 22px;
+  margin-top: 20px;
+}
+.task-numbers p,.add-task p{
+  margin: 2px;
+}
+.add-task{
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 22px;
+  text-align: center;
+  cursor: pointer;
+  height: 22px;
+  margin-top: 20px;
+}
+.head-of-card{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid darkblue;
+}
+.task{
+  background-color: white;
+  border: 2px solid white;
+  margin: 5px;  
+  border-radius: 10px;
+  text-align: center;
+  border-style: inset;
+}
+#root > div > h1{
+  text-align: center;
+}
+.header-of-todo{
+  display: flex;
+  justify-content: space-between; 
+}
+.filter input{
+  margin-top: 30px;
+  min-height: 30px;
+  border-radius: 10px;
+  outline: none;
+  padding: 5px;
+}
+button{
+  outline: none;
+}
