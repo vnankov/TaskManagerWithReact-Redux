@@ -2,15 +2,20 @@ import React from 'react'
 import SingleCard from './singleCard';
 import { connect } from 'react-redux';
 import AddColumn from './addColumn';
+import Filter from './filter';
 
 class Cards extends React.Component{
-
 
     render(){
         const { todos } = this.props;
 
         return(
-            <div className="all-cards">
+            <div>
+                <div className="header-of-todo">
+                    <h1> Create Todo Task Manager </h1>
+                    <Filter />
+                </div>
+                <div className="all-cards">
                     {
                         todos.map(todo =>
                             <SingleCard name={todo.name}
@@ -19,11 +24,13 @@ class Cards extends React.Component{
                             />
                         )
                     }
-                <AddColumn createColumn={this.props.createColumn}/>
+                    <AddColumn createColumn={this.props.createColumn}/>
+                </div>
             </div>
         )
     }
 }
+
 
 function mapStateToProps(state) {
     const { todos } = state;

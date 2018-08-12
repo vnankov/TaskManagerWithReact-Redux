@@ -1,8 +1,9 @@
 import React from 'react'
-import Cards from './cards';
-import Filter from './filter';
+import  Cards from './cards';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Details from './details'
 
 const store = createStore(function todosReducer(state = { todos: [], filter: "", tasks: [] }, action) {
     switch(action.type) {
@@ -12,7 +13,14 @@ const store = createStore(function todosReducer(state = { todos: [], filter: "",
             });
         case 'CREATE_TASK':
             return Object.assign({}, state, {
-            tasks: [...state.tasks, { id: Math.random(), name: action.task.name}]
+            tasks: [...state.tasks,{
+                    id: Math.random(),
+                    name: action.task.name,
+                    creator: action.task.creator,
+                    deadline: action.task.deadline,
+                    selectedOption: action.task.selectedOption,
+                    details: action.task.details,
+                }]
             });
   
       default:
@@ -25,13 +33,12 @@ class Wrapper extends React.Component{
     render(){
         return(
             <Provider store={store}>
-            <div>
-                <div className="header-of-todo">
-                    <h1> Create Todo Task Manager </h1>
-                    <Filter />
-                </div>
-                <Cards />
-            </div>
+                <Router>
+                    <div>
+                        <Route exact  path="/" component={Cards} />
+                        <Route path="/details" component={Details} />
+                    </div>
+                </Router>
             </Provider>
         )
     }

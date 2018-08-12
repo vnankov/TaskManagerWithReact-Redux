@@ -70,6 +70,8 @@ input{
   border-radius: 10px;
   text-align: center;
   border-style: inset;
+  overflow: auto;
+  padding: 0 5px;
 }
 #root > div > h1{
   text-align: center;
@@ -137,4 +139,59 @@ button{
 }
 .task h3, .task p{
   margin: 10px auto;
+}
+.modal > p > span {
+  font-weight: 600;
+  text-decoration: underline;
+  
+}
+.modal > p{
+  font-size: 21px;
+}
+.tasks-container{
+  max-height: 400px;
+  overflow: auto;
+}
+.none{
+  display: none;
+}
+.modal > .error-message-column{
+  font-size: 16px;
+  color: red;
+}
+.modal .textarea{
+  width: 75%;
+  border-radius: 10px;
+  min-height: 75px;
+  margin: 5px;
+}
+.modal .textarea[type="textarea"]{
+  text-align: center;
+  outline: none;
+}
+.modal .radio-buttons{
+  margin: 10px;
+}
+.task button a{
+  text-decoration: unset;
+}
+.task button a:hover{
+  text-decoration: underline;
+}
+.details-task{
+  width: 75%;
+  margin: 0 auto;
+}
+.lightblue-task-details{
+  background-color: lightblue;
+  border: 2px solid white;
+  margin: 5px;  
+  border-radius: 10px;
+  text-align: center;
+  border-style: inset;
+  overflow: auto;
+  padding: 0 5px;
+}
+.lightblue-task-details h3{
+  display: inline-block;
 }

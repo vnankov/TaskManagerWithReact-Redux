@@ -2,32 +2,35 @@ import React from 'react'
 import Task from './task';
 import AddTask from './addTask';
 import { connect } from 'react-redux';
-
+import { number, string } from 'prop-types';
 
 class SingleCard extends React.Component{
-
-
+     
     render(){
         const { name, id, tasks } = this.props;
+        const taskID = Date.now();
+
         return(
             <div className="single-card" id={id}>
                 <div className="head-of-card">
                     <div className="task-numbers">
-                        <p>1</p>
+                        <p>{tasks.length}</p>
                     </div>
                     <h3>{name}</h3>
-                    <AddTask createTask={this.props.createTask}/>
+                    <AddTask createTask={this.props.createTask} taskID={taskID}/>
                 </div>
-                           
-                {
-                    tasks.map(task =>
-                        <Task name={task.name}
-                            key={task.id}
-                            id={task.id}
-                        />
-                    )
-                }
-                    
+                <div className="tasks-container">         
+                    {
+                        tasks.map(task =>
+                            <Task 
+                                name={task.name}
+                                creator={task.creator}
+                                key={task.id}
+                                id={task.id}
+                            />
+                        )
+                    }
+                </div>
                 
             </div>
         )
@@ -45,12 +48,17 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {  
-        createTask(name, id) {
+        createTask(name, creator, id, deadline, selectedOption, details, something) {
             const createTaskAction = {
                 type: 'CREATE_TASK',
                 task: {
                     name, 
-                    id
+                    creator,
+                    id,
+                    deadline,
+                    selectedOption,
+                    details,
+                    something
                 }
             };
 
@@ -61,4 +69,8 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
+SingleCard.propTypes = {
+    name: string.isRequired,
+    id: number.isRequired
+}
 export default connect(mapStateToProps, mapDispatchToProps)(SingleCard);

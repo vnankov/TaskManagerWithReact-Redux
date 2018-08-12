@@ -6,7 +6,8 @@ class AddColumn extends React.Component {
     super(props);
     this.state = { 
         open: false,
-        todoName : '' 
+        todoName : '', 
+        errorMessage : 'none'
     };
 
     this.addColumn = this.addColumn.bind(this);
@@ -17,14 +18,22 @@ class AddColumn extends React.Component {
     };
 
     closeModal = () => {
-        this.setState({ open: false, todoName : '' });
+        this.setState({ open: false, todoName : '' ,errorMessage : 'none'  });
     };
 
     addColumn(ev){
         ev.preventDefault();
-        if(this.state.todoName !== ''){
+        if(this.state.todoName.length > 2 &&
+           this.state.todoName.length < 100 &&
+            (this.state.todoName.charCodeAt(0) < 48 || 
+             this.state.todoName.charCodeAt(0) > 57
+            ) 
+         ){
             this.props.createColumn(this.state.todoName)
-            this.setState({todoName : '', open : false})
+            this.setState({todoName : '', open : false, errorMessage : 'none'})
+        }
+        else{
+            this.setState({errorMessage : 'error-message-column'})
         }
     }
     onChange({target}){
@@ -44,7 +53,9 @@ class AddColumn extends React.Component {
           on="focus"
         >
             <div className="modal">
-                <p>Add a column</p>
+                <p>Add a <span>column</span></p>
+                <p className={this.state.errorMessage}>* Column length must be between 2 and 100 characters</p>
+                <p className={this.state.errorMessage}>* Column name must NOT start with number</p>
                 <form>
                     <input 
                         className="add-column"
