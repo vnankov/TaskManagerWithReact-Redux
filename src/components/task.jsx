@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { number, string } from 'prop-types';
+import { string } from 'prop-types';
 
 class Task extends React.Component{
 
     render(){
         const { name, creator, id } = this.props;
+        console.log("Single task ID : ", id)
 
         return (
             <div className="task" id={id}>
@@ -23,8 +24,7 @@ class Task extends React.Component{
 
 Task.propTypes = {
     name: string.isRequired,
-    creator: string.isRequired,
-    id: number.isRequired
+    creator: string.isRequired
 }
 
 export default Task;

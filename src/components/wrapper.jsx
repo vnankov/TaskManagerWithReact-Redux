@@ -5,6 +5,7 @@ import { createStore } from 'redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Details from './details'
 
+
 const store = createStore(function todosReducer(state = { todos: [], filter: "", tasks: [] }, action) {
     switch(action.type) {
         case 'CREATE_TODO':
@@ -26,7 +27,7 @@ const store = createStore(function todosReducer(state = { todos: [], filter: "",
       default:
         return state;
     }
-  });
+  },window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class Wrapper extends React.Component{
 

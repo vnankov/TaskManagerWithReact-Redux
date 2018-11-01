@@ -20,6 +20,7 @@ class AddTask extends React.Component {
     this.handleOptionChange = this.handleOptionChange.bind(this);
     this.handleDetailsChange = this.handleDetailsChange.bind(this);
   }
+
     openModal = () => {
         this.setState({ open: true });
     };
@@ -43,7 +44,8 @@ class AddTask extends React.Component {
                 this.state.creator,
                 this.state.deadline,
                 this.state.selectedOption,
-                this.state.details
+                this.state.details,
+                this.props.taskID
              )
             this.setState({taskName : '', open : false})
         }
@@ -65,6 +67,8 @@ class AddTask extends React.Component {
     }
 
   render() {
+
+
     return (
         <div >
             <button className="add-task" onClick={this.openModal}>

@@ -8,7 +8,6 @@ class Cards extends React.Component{
 
     render(){
         const { todos } = this.props;
-
         return(
             <div>
                 <div className="header-of-todo">
@@ -36,7 +35,7 @@ function mapStateToProps(state) {
     const { todos } = state;
 
     return {
-        todos: todos    
+        todos  
     };
 }
 
