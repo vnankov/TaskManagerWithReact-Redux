@@ -6,13 +6,12 @@ class Task extends React.Component{
 
     render(){
         const { name, creator, id } = this.props;
-        console.log("Single task ID : ", id)
 
         return (
             <div className="task" id={id}>
                 <h3>{name}</h3>
                 <p>Created by {creator}</p>
-                <Link to='/details'>
+                <Link to="/details">
                     <button>
                         Details..
                     </button>

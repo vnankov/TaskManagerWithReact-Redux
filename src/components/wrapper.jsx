@@ -21,6 +21,7 @@ const store = createStore(function todosReducer(state = { todos: [], filter: "",
                     deadline: action.task.deadline,
                     selectedOption: action.task.selectedOption,
                     details: action.task.details,
+                    taskID: action.task.taskID
                 }]
             });
   

@@ -8,33 +8,31 @@ class SingleCard extends React.Component{
      
     render(){
         const { name, id, tasks } = this.props;
-        console.log("Single card ID : ", id)
-        const currentTasks = tasks.filter(task => task.id !== id);
-        console.log(currentTasks)
+        let number = [];
+        number.push(tasks.filter(l => l.taskID === id))
+
         return(
             
             <div className="single-card" id={id}>
                 <div className="head-of-card">
                     <div className="task-numbers">
-                        <p>{tasks.length}</p>
+                        <p>{number[0].length}</p>
                     </div>
                     <h3>{name}</h3>
                     <AddTask createTask={this.props.createTask} taskID={id}/>
                 </div>
-                <div className="tasks-container">         
                     {
-                        currentTasks.map(task =>
-                            
+                        tasks.filter(l => l.taskID === id)
+                        .map(task =>
                             <Task 
                                 name={task.name}
                                 creator={task.creator}
                                 key={task.id}
                                 id={id}
                             />
-
                         )
+
                     }
-                </div>
                 
             </div>
         )
