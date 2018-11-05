@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { number, string } from 'prop-types';
+import { string } from 'prop-types';
 
 class Task extends React.Component{
 
@@ -11,7 +11,7 @@ class Task extends React.Component{
             <div className="task" id={id}>
                 <h3>{name}</h3>
                 <p>Created by {creator}</p>
-                <Link to='/details'>
+                <Link to="/details">
                     <button>
                         Details..
                     </button>
@@ -23,8 +23,7 @@ class Task extends React.Component{
 
 Task.propTypes = {
     name: string.isRequired,
-    creator: string.isRequired,
-    id: number.isRequired
+    creator: string.isRequired
 }
 
 export default Task;

@@ -8,29 +8,31 @@ class SingleCard extends React.Component{
      
     render(){
         const { name, id, tasks } = this.props;
-        const taskID = Date.now();
+        let number = [];
+        number.push(tasks.filter(l => l.taskID === id))
 
         return(
+            
             <div className="single-card" id={id}>
                 <div className="head-of-card">
                     <div className="task-numbers">
-                        <p>{tasks.length}</p>
+                        <p>{number[0].length}</p>
                     </div>
                     <h3>{name}</h3>
-                    <AddTask createTask={this.props.createTask} taskID={taskID}/>
+                    <AddTask createTask={this.props.createTask} taskID={id}/>
                 </div>
-                <div className="tasks-container">         
                     {
-                        tasks.map(task =>
+                        tasks.filter(l => l.taskID === id)
+                        .map(task =>
                             <Task 
                                 name={task.name}
                                 creator={task.creator}
                                 key={task.id}
-                                id={task.id}
+                                id={id}
                             />
                         )
+
                     }
-                </div>
                 
             </div>
         )
@@ -42,23 +44,23 @@ function mapStateToProps(state) {
     const { tasks } = state;
 
     return {
-        tasks: tasks    
+        tasks 
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {  
-        createTask(name, creator, id, deadline, selectedOption, details, something) {
+        createTask(name, creator, deadline, selectedOption, details, taskID,id) {
             const createTaskAction = {
                 type: 'CREATE_TASK',
                 task: {
                     name, 
                     creator,
-                    id,
                     deadline,
                     selectedOption,
                     details,
-                    something
+                    taskID,
+                    id
                 }
             };
 

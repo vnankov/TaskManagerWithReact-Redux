@@ -7,7 +7,6 @@ class Details extends React.Component{
 
     render(){
         const { tasks } = this.props;
-
         return(
             <div>
                 <h1>Details section</h1>
@@ -20,6 +19,7 @@ class Details extends React.Component{
                                 creator={task.creator}
                                 deadline={task.deadline}
                                 selectedOption={task.selectedOption}
+                                details={task.details}
                                 key={task.id}
                                 id={task.id}
                             />
@@ -28,13 +28,15 @@ class Details extends React.Component{
                 </div>
             </div>
         )
+
     }
+
 }
 function mapStateToProps(state) {
     const { tasks } = state;
 
     return {
-        tasks: tasks    
+        tasks
     };
 }
 
