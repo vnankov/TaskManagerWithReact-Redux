@@ -22,13 +22,16 @@ class SingleCard extends React.Component{
                     <AddTask createTask={this.props.createTask} taskID={id}/>
                 </div>
                     {
-                        tasks.filter(l => l.taskID === id)
+                        tasks.filter(task => task.taskID === id)
                         .map(task =>
                             <Task 
                                 name={task.name}
                                 creator={task.creator}
+                                deadline={task.deadline}
+                                selectedOption={task.selectedOption}
+                                details={task.details}
                                 key={task.id}
-                                id={id}
+                                id={task.id}
                             />
                         )
 

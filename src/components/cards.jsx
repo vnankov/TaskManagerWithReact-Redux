@@ -17,7 +17,12 @@ class Cards extends React.Component{
                 <div className="all-cards">
                     {
                         todos.map(todo =>
-                            <SingleCard name={todo.name}
+                            <SingleCard 
+                                name={todo.name}
+                                creator={todo.creator}
+                                deadline={todo.deadline}
+                                selectedOption={todo.selectedOption}
+                                details={todo.details}
                                 key={todo.id}
                                 id={todo.id}
                             />
