@@ -7,9 +7,9 @@ import { number, string } from 'prop-types';
 class SingleCard extends React.Component{
      
     render(){
-        const { name, id, tasks } = this.props;
+        const { name, id, tasks, createTask } = this.props;
         let number = [];
-        number.push(tasks.filter(l => l.taskID === id))
+        number.push(tasks.filter(task => task.taskID === id))
 
         return(
             
@@ -19,7 +19,7 @@ class SingleCard extends React.Component{
                         <p>{number[0].length}</p>
                     </div>
                     <h3>{name}</h3>
-                    <AddTask createTask={this.props.createTask} taskID={id}/>
+                    <AddTask createTask={createTask} taskID={id}/>
                 </div>
                     {
                         tasks.filter(task => task.taskID === id)
