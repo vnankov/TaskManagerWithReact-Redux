@@ -67,8 +67,6 @@ class AddTask extends React.Component {
     }
 
   render() {
-
-
     return (
         <div >
             <button className="add-task" onClick={this.openModal}>
